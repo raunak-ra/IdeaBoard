@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>IdeaBoard</title>
+</head>
+
+
+<div class="idea-board">
+    <div class="header">
+        IDEA BOARD
+    </div>
+
+
+    <div class="tile-container">
+        <div class="tile1 tile" id=tile1>
+            <div class="header tile-header">
+                <div class="label">TILE 1</div>
+                <div class="add" onclick="addCard(1)"><img src="assets/add.svg" alt=""></div>
+            </div>
+            <div class="body tile-body" id="tile1-body">
+
+            </div>
+        </div>
+
+        <div class="tile2 tile" id=tile2>
+            <div class="header tile-header">
+                <div class="label">TILE 1</div>
+                <div class="add" onclick="addCard(2)"><img src="assets/add.svg" alt=""></div>
+            </div>
+            <div class="body tile-body" id="tile2-body">
+
+            </div>
+        </div>
+
+        <div class="tile3 tile" id=tile3>
+            <div class="header tile-header">
+                <div class="label">TILE 1</div>
+                <div class="add" onclick="addCard(3)"><img src="assets/add.svg" alt=""></div>
+            </div>
+            <div class="body tile-body" id="tile3-body">
+
+            </div>
+        </div>
+    </div>
+
+    <div id=panel-container>
+        <div class="panel">
+            <textarea id="myText"></textarea>
+            <div class="actions">
+                <div id="like"><img src="assets/heartblue.svg"" /></div>
+                <div id=" counter"></div>
+                <div id="del"><img src="assets/delete.svg" /></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</html>

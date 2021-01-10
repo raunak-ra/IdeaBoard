@@ -1,0 +1,173 @@
+* {
+  max-width: 1000px;
+  margin: auto;
+  justify-content: center;
+  padding: auto;
+}
+
+/* BOARD AREA  */
+.idea-board {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 100vh;
+  margin: 5px;
+}
+.idea-board > .header {
+  padding: 5px;
+  text-align: center;
+  font-family: "Handlee", "Roboto", helvetica, cursive;
+  font-weight: bold;
+  font-size: 138.5%;
+}
+
+/* TILE AREA  */
+.tile-container,
+.tile-header {
+  display: flex;
+}
+
+.tile-header {
+  background: cadetblue;
+  border-radius: 25px;
+  padding: 2px;
+  justify-content: center;
+  text-align: center;
+  height: 40px;
+}
+
+.tile1 > .header,
+.card1 {
+  background: #c3ee8f;
+}
+.tile2 > .header,
+.card2 {
+  background: #ffff88;
+}
+.tile3 > .header,
+.card3 {
+  background: #eed3ff;
+}
+
+.tile1,
+.tile2,
+.tile3 {
+  justify-content: space-around;
+  width: 30%;
+  height: 200vh;
+}
+
+.tile-body {
+  padding: 5px;
+}
+.card1,
+.card2,
+.card3 {
+  width: 90%;
+  height: 150px;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 15px;
+  word-break: break-word;
+  overflow: hidden;
+  margin: 10px 0px;
+}
+
+.label {
+  width: 70%;
+}
+
+.add {
+  width: 30%;
+}
+
+img {
+  height: 30px;
+  transition: width 0.5s;
+  transition-timing-function: ease ease-in-out;
+}
+
+img:active {
+  width: 20px;
+}
+
+/* PANEL AREA */
+
+.panel {
+  width: min-content;
+  top: 25%;
+  right: 35%;
+  border: 2px solid;
+  border-radius: 10px;
+  position: fixed;
+}
+
+#panel-container {
+  width: 100%;
+  display: none;
+  top: 6px;
+  margin: auto;
+  z-index: 10;
+  position: absolute;
+  height: 200vh;
+  max-width: inherit;
+  background: beige;
+  opacity: 0.8;
+}
+
+textarea {
+  font-size: x-large;
+  margin: 5px;
+  width: 270px;
+  height: 230px;
+  resize: none;
+  padding: 8px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+#like,
+#del {
+  width: 15%;
+}
+
+#counter {
+  margin: auto;
+  font-size: xx-large;
+  font-family: fangsong;
+  color: deepskyblue;
+}
+
+.card-likes {
+  bottom: 0;
+  font-family: sans-serif;
+  font-size: x-large;
+  color: red;
+}
+
+.card-content {
+  height: 90%;
+  overflow: auto;
+}
+/* SCROLLBAR AREA  */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* background: rgb(54, 36, 54); */
+  background: teal;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
