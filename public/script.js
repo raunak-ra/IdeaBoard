@@ -16,7 +16,9 @@ function addCard(tileId) {
 function updateCard(cardId, data) {
   //display panel with text
   document.getElementById("myText").value = data;
-  document.getElementById("like-counter").innerText = likeCounterList.get(cardId);
+  document.getElementById("like-counter").innerText = likeCounterList.get(
+    cardId
+  );
   document.getElementById("panel-container").style.display = "block";
   // update old card
   deleteCard(cardId);
@@ -111,16 +113,6 @@ function bindUpdateCardEvent(cardId) {
     updateCard(cardId, dataList.get(cardId));
   };
 }
-
-// function bindUpdateLikeEvent(cardId) {
-//   //update likes
-//   document.getElementById(like).onclick = () => {
-//     let likesCount = likeCounterList.get(cardId);
-//     likeCounterList.set(cardId, likesCount + 1);
-//     document.getElementById("counter").innerText = likesCount + 1;
-//     updateLike(cardId);
-//   };
-// }
 
 function updateLike(cardId) {
   console.log(likeCounterList);
