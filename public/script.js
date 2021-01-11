@@ -16,6 +16,7 @@ function addCard(tileId) {
 function updateCard(cardId, data) {
   //display panel with text
   document.getElementById("myText").value = data;
+  document.getElementById("like-counter").innerText = likeCounterList.get(cardId);
   document.getElementById("panel-container").style.display = "block";
   // update old card
   deleteCard(cardId);
@@ -33,10 +34,15 @@ function deleteCard(cardId) {
 }
 
 function triggerEventToInsertCard(tileId) {
+  var cardId = getCardId(tileId);
+  likeCounterList.set(cardId, 0);
+  bindUpdateLikeEvent(cardId);
   document.getElementById("panel-container").onclick = function (e) {
     if (e.target == document.getElementById("panel-container")) {
       var data = document.getElementById("myText").value;
-      saveData(tileId, data);
+      if (data) {
+        insertNewCard(tileId, cardId, data);
+      }
       clearPanel();
     }
   };
@@ -50,13 +56,6 @@ function triggerEventToUpdateCard(cardId) {
       clearPanel();
     }
   };
-}
-
-function saveData(tileId, data) {
-  var cardId = getCardId(tileId);
-  if (data) {
-    insertNewCard(tileId, cardId, data);
-  }
 }
 
 function updateData(cardId, data) {
@@ -89,24 +88,22 @@ function insertNewCard(tileId, cardId, data) {
   var likesDiv = document.createElement("div");
   likesDiv.className = "card-likes";
   likesDiv.innerText = "0";
-  likeCounterList.set(cardId, 0);
 
   cardDiv.appendChild(textDiv);
   cardDiv.appendChild(likesDiv);
 
   document.getElementById("tile" + tileId + "-body").appendChild(cardDiv);
-  //bindUpdateLikeEvent(cardId);
+  updateLike(cardId);
   bindUpdateCardEvent(cardId);
 }
 
 function updateOldCard(cardId, data) {
   var cardDiv = document.getElementById(cardId);
-
   var textDiv = cardDiv.children[0];
   textDiv.innerText = data;
   dataList.set(cardId, data);
-  // updateLike(cardId);
-  //  bindUpdateLikeEvent(cardId);
+  updateLike(cardId);
+  // bindUpdateLikeEvent(cardId);
 }
 
 function bindUpdateCardEvent(cardId) {
@@ -115,23 +112,34 @@ function bindUpdateCardEvent(cardId) {
   };
 }
 
-function bindUpdateLikeEvent(cardId) {
-  //update likes
-  document.getElementById(like).onclick = () => {
-    let likesCount = likeCounterList.get(cardId);
-    likeCounterList.set(cardId, likesCount + 1);
-    document.getElementById("counter").innerText = likesCount + 1;
-    updateLike(cardId);
-  };
-}
+// function bindUpdateLikeEvent(cardId) {
+//   //update likes
+//   document.getElementById(like).onclick = () => {
+//     let likesCount = likeCounterList.get(cardId);
+//     likeCounterList.set(cardId, likesCount + 1);
+//     document.getElementById("counter").innerText = likesCount + 1;
+//     updateLike(cardId);
+//   };
+// }
 
 function updateLike(cardId) {
+  console.log(likeCounterList);
   var cardDiv = document.getElementById(cardId);
   var likesDiv = cardDiv.children[1];
   likesDiv.innerText = likeCounterList.get(cardId);
 }
 
+function bindUpdateLikeEvent(cardId) {
+  document.getElementById("like").onclick = function () {
+    var counter = likeCounterList.get(cardId);
+    likeCounterList.set(cardId, counter + 1);
+    document.getElementById("like-counter").innerText = counter + 1;
+    console.log(likeCounterList.get(cardId));
+  };
+}
+
 function clearPanel() {
   document.getElementById("myText").value = "";
+  document.getElementById("like-counter").innerText = "0";
   document.getElementById("panel-container").style.display = "none";
 }
