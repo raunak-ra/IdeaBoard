@@ -9,15 +9,16 @@
 .idea-board {
   border: 2px solid black;
   border-radius: 10px;
-  height: 100vh;
   margin: 5px;
+  min-height: 100vh;
 }
 .idea-board > .header {
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   font-family: "Handlee", "Roboto", helvetica, cursive;
   font-weight: bold;
   font-size: 138.5%;
+  height: 30px;
 }
 
 /* TILE AREA  */
@@ -53,7 +54,8 @@
 .tile3 {
   justify-content: space-around;
   width: 30%;
-  height: 200vh;
+  margin: 0;
+  padding: 10px;
 }
 
 .tile-body {
