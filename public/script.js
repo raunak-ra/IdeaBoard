@@ -97,6 +97,7 @@ function insertNewCard(tileId, cardId, data) {
   cardDiv.appendChild(likesDiv);
 
   document.getElementById("tile" + tileId + "-body").appendChild(cardDiv);
+  likeCardId = cardId;
   updateLike(cardId);
   bindUpdateCardEvent(cardId);
 }
@@ -107,7 +108,6 @@ function updateOldCard(cardId, data) {
   textDiv.innerText = data;
   dataList.set(cardId, data);
   updateLike(cardId);
-  // bindUpdateLikeEvent(cardId);
 }
 
 function bindUpdateCardEvent(cardId) {
@@ -118,24 +118,21 @@ function bindUpdateCardEvent(cardId) {
 }
 
 function updateLike(cardId) {
-  console.log("insidelike : " + cardId);
   var cardDiv = document.getElementById(cardId);
   var likesDiv = cardDiv.children[1];
   likesDiv.innerText = likeCounterList.get(cardId);
-  console.log(likeCounterList);
 }
 
 function bindUpdateLikeEvent(cardId) {
   document.getElementById("like").onclick = function () {
-    console.log("insidelikeb4 ", cardId);
     cardId = likeCardId;
-    console.log("insidelikeb5 ", cardId);
     if (cardId) {
       var counter = likeCounterList.get(cardId);
       likeCounterList.set(cardId, counter + 1);
       document.getElementById("like-counter").innerText = counter + 1;
+    } else {
+      alert("You cant like a card before creating it...");
     }
-    // console.log(likeCounterList.get(cardId));
   };
 }
 
