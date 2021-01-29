@@ -1,5 +1,6 @@
 var dataList = new Map();
 var likeCounterList = new Map();
+var likeCardId = "";
 var tileId = 0,
   tileOneId = 0,
   tileTwoId = 0,
@@ -8,6 +9,7 @@ var tileId = 0,
 function addCard(tileId) {
   //displayPanel
   document.getElementById("panel-container").style.display = "block";
+  likeCardId = "";
   //addCard
   deleteCard();
   triggerEventToInsertCard(tileId);
@@ -110,23 +112,30 @@ function updateOldCard(cardId, data) {
 
 function bindUpdateCardEvent(cardId) {
   document.getElementById(cardId).onclick = () => {
+    likeCardId = cardId;
     updateCard(cardId, dataList.get(cardId));
   };
 }
 
 function updateLike(cardId) {
-  console.log(likeCounterList);
+  console.log("insidelike : " + cardId);
   var cardDiv = document.getElementById(cardId);
   var likesDiv = cardDiv.children[1];
   likesDiv.innerText = likeCounterList.get(cardId);
+  console.log(likeCounterList);
 }
 
 function bindUpdateLikeEvent(cardId) {
   document.getElementById("like").onclick = function () {
-    var counter = likeCounterList.get(cardId);
-    likeCounterList.set(cardId, counter + 1);
-    document.getElementById("like-counter").innerText = counter + 1;
-    console.log(likeCounterList.get(cardId));
+    console.log("insidelikeb4 ", cardId);
+    cardId = likeCardId;
+    console.log("insidelikeb5 ", cardId);
+    if (cardId) {
+      var counter = likeCounterList.get(cardId);
+      likeCounterList.set(cardId, counter + 1);
+      document.getElementById("like-counter").innerText = counter + 1;
+    }
+    // console.log(likeCounterList.get(cardId));
   };
 }
 
